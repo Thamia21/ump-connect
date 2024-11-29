@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  overflow: hidden;
+}
+
+.container {
+  text-align: center;
+  animation: fadeIn 2s ease-in-out;
+}
+
+h1 {
+  font-size: 3.5rem;
+  color: #fff;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  animation: slideIn 1.5s ease-out;
+}
+
+h1 span {
+  color: #ffcf33;
+  font-weight: 700;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-top: 20px;
+  opacity: 0.85;
+  animation: slideIn 1.8s ease-out;
+}
+
+.buttons {
+  margin-top: 30px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 15px 40px;
+  margin: 10px;
+  font-size: 1.1rem;
+  color: #fff;
+  background: #ffcf33;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.3s ease, background 0.3s ease;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+  background: #f7b800;
+  transform: translateY(-5px);
+}
+
+.login-btn {
+  background: #29a19c;
+}
+
+.login-btn:hover {
+  background: #1e7f78;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

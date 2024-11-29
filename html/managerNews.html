@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager News List</title>
+    <link rel="stylesheet" href="../css/managerNews.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <a href="managerEventsForm.html"><i class="fas fa-calendar-plus"></i> Event Creation</a>
+        <a href="managerUpdatesForm.html"><i class="fas fa-newspaper"></i> News Creation</a>
+        <a href="managerNews.html" class="active"><i class="fas fa-list"></i> View News</a>
+        <a href="managerLogin.html" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>News Articles</h1>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search news...">
+                <button onclick="searchNews()"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table id="newsTable">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Image</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="newsTableBody">
+                    <!-- News items will be dynamically added here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="module" src="../javascript/managerNews.js"></script>
+</body>
+</html>

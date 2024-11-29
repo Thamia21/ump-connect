@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMP Connect - Admin Dashboard</title>
+    <link rel="stylesheet" href="../css/adminDashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="../img/R.png" alt="UMP Logo" class="logo">
+            <i id="toggle-btn" class="fas fa-bars toggle-icon"></i>
+        </div>
+        <div class="sidebar-menu">
+            <a href="adminDashboard.html" class="active"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
+            <a href="adminEvents.html" class="nav-link"><i class="fas fa-calendar-alt"></i><span>Events</span></a>
+            <a href="adminNews.html" class="nav-link"><i class="fas fa-newspaper"></i><span>Updates</span></a>
+            <a href="adminJobs.html"><i class="fas fa-briefcase"></i><span>Jobs</span></a>
+            <a href="user.html"><i class="fas fa-users"></i><span>Users</span></a>
+            <a href="ManagerUsers.html"><i class="fas fa-user-tie"></i><span>Managers</span></a>
+            <a href="adminUsers.html"><i class="fas fa-user-shield"></i><span>Admins</span></a>
+            <a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+        </div>
+    </div>
+
+    <!-- Main Dashboard Content -->
+    <div class="main-content" id="main-content">
+        <!-- Top Navigation Bar -->
+        <nav class="top-nav">
+            <div class="nav-left">
+                <h2>Admin Dashboard</h2>
+            </div>
+            <div class="nav-right">
+                <div class="admin-profile">
+                    <div class="profile-info">
+                        <span id="admin-name">Welcome, Admin</span>
+                        <img id="profile-pic" src="../images/default-profile.png" alt="Profile Image">
+                    </div>
+                    <div class="profile-actions">
+                        <input type="file" id="profile-image-input" accept="image/*" style="display: none;">
+                        <button class="profile-btn" onclick="document.getElementById('profile-image-input').click()">
+                            <i class="fas fa-camera"></i>
+                        </button>
+                        <button class="profile-btn" onclick="window.location.href='adminProfile.html'">
+                            <i class="fas fa-user-edit"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <button class="action-btn" onclick="window.location.href='adminEvents.html'">
+                <i class="fas fa-plus"></i> New Event
+            </button>
+            <button class="action-btn" onclick="window.location.href='adminNews.html'">
+                <i class="fas fa-plus"></i> New News
+            </button>
+            <button class="action-btn" onclick="window.location.href='adminJobs.html'">
+                <i class="fas fa-plus"></i> New Job
+            </button>
+            <button class="action-btn" onclick="window.location.href='user.html'">
+                <i class="fas fa-user-plus"></i> Add User
+            </button>
+        </div>
+
+        <!-- Statistics Section -->
+        <div class="dashboard-stats">
+            <div class="stat-box">
+                <i class="fas fa-users stat-icon"></i>
+                <div class="stat-info">
+                    <h3>Total Users</h3>
+                    <p id="user-count">Loading...</p>
+                </div>
+            </div>
+            <div class="stat-box">
+                <i class="fas fa-calendar-check stat-icon"></i>
+                <div class="stat-info">
+                    <h3>Active Events</h3>
+                    <p id="event-count">Loading...</p>
+                </div>
+            </div>
+            <div class="stat-box">
+                <i class="fas fa-newspaper stat-icon"></i>
+                <div class="stat-info">
+                    <h3>News Posts</h3>
+                    <p id="news-count">Loading...</p>
+                </div>
+            </div>
+            <div class="stat-box">
+                <i class="fas fa-briefcase stat-icon"></i>
+                <div class="stat-info">
+                    <h3>Job Listings</h3>
+                    <p id="job-count">Loading...</p>
+                </div>
+            </div>
+            <div class="stat-box">
+                <i class="fas fa-user-shield stat-icon"></i>
+                <div class="stat-info">
+                    <h3>Admins</h3>
+                    <p id="admin-count">Loading...</p>
+                </div>
+            </div>
+            <div class="stat-box">
+                <i class="fas fa-user-tie stat-icon"></i>
+                <div class="stat-info">
+                    <h3>Event Managers</h3>
+                    <p id="guest-count">Loading...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="charts-section">
+            <div class="chart-container">
+                <h3><i class="fas fa-chart-line"></i> User Growth</h3>
+                <canvas id="userGrowthChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3><i class="fas fa-chart-pie"></i> Content Distribution</h3>
+                <canvas id="contentDistributionChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Recent Activity Section -->
+        <div class="recent-activity">
+            <div class="section-header">
+                <h3><i class="fas fa-history"></i> Recent Activity</h3>
+                <button id="refresh-activity" class="refresh-btn">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+            <div class="activity-list" id="activity-list">
+                <div class="activity-item">Loading activities...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="../javascript/adminDashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #e0f7fa;
+}
+
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.shape {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(#008080, #006666);
+}
+
+.shape:nth-child(1) {
+    top: -50px;
+    left: -50px;
+}
+
+.shape:nth-child(2) {
+    bottom: -50px;
+    right: -50px;
+}
+
+form {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+form h3 {
+    margin-bottom: 20px;
+    color: #008080;
+}
+
+form label {
+    display: block;
+    text-align: left;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Adjust the form container */
+form {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+form label {
+    display: block;
+    text-align: left;
+    margin-bottom: 10px;
+    color: #333;
+    position: relative;
+}
+
+/* Input field styling */
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding-right: 35px; /* Adjust space for the icon on the right */
+}
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #008080;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #006666;
+}
+
+/* Adjust the eye icon (toggle-password) size and position */
+.toggle-password {
+    position: absolute;
+    right: 10px; /* Align the icon to the right */
+    top: 35px;
+    cursor: pointer;
+}
+
+#toggle-password i {
+    font-size: 15px; /* Adjust the icon size */
+    color: #BDBDBD;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #e0f7fa;
+}
+
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.shape {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(#008080, #006666);
+}
+
+.shape:nth-child(1) {
+    top: -50px;
+    left: -50px;
+}
+
+.shape:nth-child(2) {
+    bottom: -50px;
+    right: -50px;
+}
+
+form {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+form h3 {
+    margin-bottom: 20px;
+    color: #008080;
+}
+
+form label {
+    display: block;
+    text-align: left;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Adjust the form container */
+form {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+form label {
+    display: block;
+    text-align: left;
+    margin-bottom: 10px;
+    color: #333;
+    position: relative;
+}
+
+/* Input field styling */
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding-right: 35px; /* Adjust space for the icon on the right */
+}
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #008080;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #006666;
+}
+
+/* Adjust the eye icon (toggle-password) size and position */
+.toggle-password {
+    position: absolute;
+    right: 10px; /* Align the icon to the right */
+    top: 35px;
+    cursor: pointer;
+}
+
+#toggle-password i {
+    font-size: 15px; /* Adjust the icon size */
+    color: #BDBDBD;
+}

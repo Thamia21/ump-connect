@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Registration Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/adminUsers.css">
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <a href="adminDashboard.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
+        <a href="adminEvents.html"><i class="fas fa-calendar-alt"></i><span> Events</span></a>
+        <a href="adminNews.html"><i class="fas fa-newspaper"></i><span>Updates</span></a>
+        <a href="adminJobs.html"><i class="fas fa-briefcase"></i><span>Jobs</span></a>
+        <a href="user.html"><i class="fas fa-users"></i><span>Users</span></a>
+        <a href="ManagerUsers.html"><i class="fas fa-user-tie"></i><span>Managers</span></a>
+        <a href="adminUsers.html" class="active"><i class="fas fa-user-shield"></i><span>Admins</span></a>
+        <a href="adminLogin.html"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+      </div>
+      
+
+    <!-- Main content -->
+    <div class="admin-container">
+        <h1>Admin Registration Details</h1>
+        <div class="container">
+            <div class="controls-section">
+                <div class="search-filter">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Search users...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+                <div class="actions">
+                    <div class="filter-box">
+                        <select id="statusFilter">
+                            <option value="all">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+                    <button class="btn-refresh" onclick="refreshTable()">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                    <button class="btn-export" onclick="exportToCSV()">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table id="adminTable">
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Surname</th>
+                            <th>Email</th>
+                            <th>Staff Number</th>
+                            <th>Registration Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminTableBody">
+                        <!-- Admin data will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../javascript/adminUsers.js"></script>
+
+</body>
+
+</html>

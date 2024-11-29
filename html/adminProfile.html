@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Profile | UMP CONNECT</title>
+    <link rel="stylesheet" href="../css/adminProfile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-brand">UMP CONNECT</div>
+        <div class="nav-links">
+            <a href="adminDashboard.html"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="adminUsers.html"><i class="fas fa-users"></i> Users</a>
+            <a href="adminProfile.html" class="active"><i class="fas fa-user-circle"></i> Profile</a>
+            <button id="logout-btn" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="profile-header">
+            <div class="profile-picture-container">
+                <img id="profile-picture" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjgiIGhlaWdodD0iMTI4IiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFhNzNlOCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0yMCAyMXYtMmE0IDQgMCAwIDAtNC00SDhhNCA0IDAgMCAwLTQgNHYyIj48L3BhdGg+PGNpcmNsZSBjeD0iMTIiIGN5PSI3IiByPSI0Ij48L2NpcmNsZT48L3N2Zz4=" alt="Profile Picture">
+                <div class="picture-overlay">
+                    <label for="picture-upload" class="upload-btn">
+                        <i class="fas fa-camera"></i>
+                    </label>
+                    <input type="file" id="picture-upload" accept="image/*" hidden>
+                </div>
+            </div>
+            <h2>Admin Profile</h2>
+        </div>
+
+        <div class="profile-content">
+            <form id="profileForm" class="profile-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="full-name"><i class="fas fa-user"></i> Full Name</label>
+                        <input type="text" id="full-name" name="full-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="surname"><i class="fas fa-user"></i> Surname</label>
+                        <input type="text" id="surname" name="surname" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+                        <input type="email" id="email" name="email" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="staff-number"><i class="fas fa-id-card"></i> Staff Number</label>
+                        <input type="text" id="staff-number" name="staff-number" readonly>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="role"><i class="fas fa-user-shield"></i> Role</label>
+                    <input type="text" id="role" name="role" readonly value="Admin">
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="primary-btn"><i class="fas fa-save"></i> Update Profile</button>
+                </div>
+            </form>
+
+            <div class="password-change">
+                <h3><i class="fas fa-lock"></i> Change Password</h3>
+                <form id="passwordForm">
+                    <div class="form-group password-input">
+                        <label for="current-password">Current Password</label>
+                        <div class="password-field">
+                            <input type="password" id="current-password" name="current-password" required>
+                            <i class="fas fa-eye password-toggle"></i>
+                        </div>
+                    </div>
+                    <div class="form-group password-input">
+                        <label for="new-password">New Password</label>
+                        <div class="password-field">
+                            <input type="password" id="new-password" name="new-password" required>
+                            <i class="fas fa-eye password-toggle"></i>
+                        </div>
+                    </div>
+                    <div class="form-group password-input">
+                        <label for="confirm-new-password">Confirm New Password</label>
+                        <div class="password-field">
+                            <input type="password" id="confirm-new-password" name="confirm-new-password" required>
+                            <i class="fas fa-eye password-toggle"></i>
+                        </div>
+                    </div>
+                    <div class="password-requirements">
+                        <p><i class="fas fa-info-circle"></i> Password must contain:</p>
+                        <ul>
+                            <li id="length">At least 8 characters</li>
+                            <li id="uppercase">One uppercase letter</li>
+                            <li id="lowercase">One lowercase letter</li>
+                            <li id="number">One number</li>
+                            <li id="special">One special character</li>
+                        </ul>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="primary-btn"><i class="fas fa-key"></i> Update Password</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../javascript/adminProfile.js"></script>
+</body>
+</html>

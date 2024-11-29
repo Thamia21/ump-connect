@@ -1,0 +1,171 @@
+/* Basic styling for the body to center the content and provide a background color */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #e0f7fa;
+}
+
+/* Container for the entire register form and its sections */
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 1000px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* Left side styling - typically for the welcome message and logo */
+.left-side {
+    background-color: #008080;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Logo styling */
+.left-side img {
+    width: 450px;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+/* Welcome message styling */
+.left-side h1 {
+    font-size: 2em;
+    margin: 0;
+    text-align: center;
+}
+
+/* Right side styling - typically for the form */
+.right-side {
+    background-color: #ffffff;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Styling for the form content */
+.content {
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Form header styling */
+.content h3 {
+    margin-bottom: 20px;
+    color: #008080;
+    text-align: center;
+}
+
+/* Label styling for the form fields */
+.content label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Input field styling */
+.content input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Button styling */
+.content button {
+    width: 100%;
+    padding: 10px;
+    background-color: #008080;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+/* Button hover effect */
+.content button:hover {
+    background-color: #006666;
+}
+
+/* Styling for the form footer */
+.form p {
+    margin: 0;
+    text-align: center;
+}
+
+/* Styling for the links in the form footer */
+.form a {
+    color: #008080;
+    text-decoration: none;
+}
+
+/* Link hover effect */
+.form a:hover {
+    text-decoration: underline;
+}
+
+/* Media query for larger screens - changes flex direction to row */
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+    }
+    .left-side, .right-side {
+        flex: 1;
+    }
+}
+
+/* Style for the password container */
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Style for the password input field */
+.password-container input {
+    width: 100%;
+    padding-right: 30px;
+    padding-left: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Style for the Font Awesome toggle password icon */
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    font-size: 0.8em;
+    cursor: pointer;
+    color: #555;
+    top: 40%;
+    transform: translateY(-50%);
+}
+
+/* Change the eye icon color on hover */
+.toggle-password:hover {
+    color: #333;
+}
+
+/* Password feedback message styling */
+.password-feedback {
+    font-size: 0.9em;
+    color: red;
+}
+

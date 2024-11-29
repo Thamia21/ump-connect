@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - UMP Connect</title>
+    <link rel="stylesheet" href="../css/aboutUs.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class="topnav">
+        <div class="logo">
+            <span class="ump">UMP</span>
+            <span class="separator"></span>
+            <span class="connect">CONNECT</span>
+        </div>
+
+        <div class="navContent" id="navContent">
+            <a href="events.html" class="button"><i class="fas fa-home"></i> Home</a>
+            <a href="news.html" class="button"><i class="fas fa-bullhorn"></i> Updates</a>
+            <a href="jobs.html" class="button"><i class="fas fa-briefcase"></i> Jobs</a>
+            <a href="aboutUs.html" class="button active"><i class="fas fa-info-circle"></i>About Us</a>
+        </div>
+
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="dropdown profile-dropdown">
+            <a href="javascript:void(0)" class="user" id="profileInitials"></a>
+            <div class="dropdown-content">
+                <a href="userProfile.html">Edit Profile</a>
+                <a href="login.html">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1>Welcome to UMP Connect</h1>
+            <p>Connecting Students, Faculty, and Opportunities</p>
+        </div>
+    </div>
+
+    <!-- Container -->
+    <div class="container">
+        <!-- About Section -->
+        <div class="about-section">
+            <div class="section-content">
+                <h2>About UMP Connect</h2>
+                <p><span class="highlight">UMP Connect</span> is a comprehensive platform designed to bring together the
+                    University of Mpumalanga (UMP) community. Built to enhance engagement and streamline communication, UMP
+                    Connect serves as a bridge between students, faculty members, event managers, and administrators.</p>
+            </div>
+            <div class="section-image">
+                <i class="fas fa-university"></i>
+            </div>
+        </div>
+
+        <!-- Vision Section -->
+        <div class="vision-section">
+            <div class="section-image">
+                <i class="fas fa-eye"></i>
+            </div>
+            <div class="section-content">
+                <h2>Our Vision</h2>
+                <p>To foster an inclusive and connected university environment where students and staff can easily access
+                    important information, stay informed about campus activities, and actively participate in university life.
+                </p>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features-section">
+            <h2>Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Event Management</h3>
+                    <p>Organize and discover campus events with ease. Get notifications for upcoming activities.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-newspaper"></i>
+                    <h3>News & Announcements</h3>
+                    <p>Stay updated with the latest campus news and important announcements.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-user-circle"></i>
+                    <h3>User Profiles</h3>
+                    <p>Personalize your experience and track your campus engagement.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-compass"></i>
+                    <h3>Easy Navigation</h3>
+                    <p>Find what you need quickly with our intuitive interface.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Commitment Section -->
+        <div class="commitment-section">
+            <h2>Our Commitment</h2>
+            <div class="commitment-content">
+                <div class="commitment-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <p>We are dedicated to creating a secure and user-friendly experience. UMP Connect is committed to transparency,
+                    collaboration, and providing students, faculty, and staff with a platform that enhances communication within
+                    the university community.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 UMP Connect. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase Configuration -->
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDRo0-7uMM7wvNC5zGF3nXTbjJgw56YBeE",
+            authDomain: "admin-form-72be8.firebaseapp.com",
+            projectId: "admin-form-72be8",
+            storageBucket: "admin-form-72be8.appspot.com",
+            messagingSenderId: "955286780881",
+            appId: "1:955286780881:web:b6c93cecf4f727774ebef0"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        // Function to get user initials
+        function getInitials(firstName, lastName) {
+            const firstInitial = firstName ? firstName.charAt(0).toUpperCase() : '';
+            const lastInitial = lastName ? lastName.charAt(0).toUpperCase() : '';
+            return `${firstInitial}${lastInitial}`;
+        }
+
+        // Function to update profile initials
+        async function updateProfileInitials() {
+            onAuthStateChanged(auth, async (user) => {
+                if (user) {
+                    try {
+                        const userDoc = await getDoc(doc(db, "users", user.uid));
+                        let userData = userDoc.exists() ? userDoc.data() : null;
+
+                        if (!userData) {
+                            const adminDoc = await getDoc(doc(db, "admins", user.uid));
+                            userData = adminDoc.exists() ? adminDoc.data() : null;
+                        }
+
+                        if (userData) {
+                            const initials = getInitials(userData.firstName, userData.lastName);
+                            document.getElementById('profileInitials').innerText = initials;
+                        } else {
+                            document.getElementById('profileInitials').innerText = 'U';
+                        }
+                    } catch (error) {
+                        console.error("Error fetching user data:", error);
+                        document.getElementById('profileInitials').innerText = 'U';
+                    }
+                }
+            });
+        }
+
+        // Menu toggle functionality
+        const menuToggle = document.getElementById('menuToggle');
+        const navContent = document.getElementById('navContent');
+
+        // Toggle menu on button click
+        menuToggle.addEventListener('click', () => {
+            navContent.classList.toggle('show');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !navContent.contains(e.target)) {
+                navContent.classList.remove('show');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close menu when pressing Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navContent.classList.contains('show')) {
+                navContent.classList.remove('show');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Initialize profile initials on page load
+        updateProfileInitials();
+    </script>
+</body>
+</html>

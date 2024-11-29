@@ -1,0 +1,320 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Sidebar styling */
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #007272;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-bottom: 5px;
+    border-left: 4px solid transparent;
+}
+
+.sidebar a:hover {
+    background-color: #009999;
+    border-left: 4px solid #f4f4f4;
+}
+
+.sidebar a.active {
+    background-color: #005f5f;
+    font-weight: bold;
+    border-left: 4px solid #f4f4f4;
+}
+
+.sidebar i {
+    margin-right: 15px;
+    font-size: 18px;
+}
+
+/* Center the Admin Panel title */
+h2 {
+    text-align: center;
+    color: teal;
+    margin-top: 20px;
+}
+
+/* Main content container */
+.admin-container {
+    margin-left: 350px;
+    max-width: 1000px;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Admin Header */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Real-time Clock */
+.real-time-clock {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px;
+    background-color: #007272;
+    color: white;
+    border-radius: 5px;
+    font-size: 1.1rem;
+}
+
+.real-time-clock i {
+    color: #ffe605;
+}
+
+/* Search Section */
+.search-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+.search-controls {
+    display: flex;
+    gap: 10px;
+}
+
+#search-input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#status-filter {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-width: 150px;
+}
+
+/* Table Styles */
+.table-responsive {
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+#newsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#newsTable th,
+#newsTable td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#newsTable th {
+    background-color: #007272;
+    color: white;
+    font-weight: 600;
+}
+
+#newsTable tr:hover {
+    background-color: #f5f5f5;
+}
+
+#newsTable .description-link {
+    color: #007272;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#newsTable .description-link:hover {
+    text-decoration: underline;
+}
+
+/* Action Buttons */
+.approve-btn,
+.reject-btn,
+.delete-btn,
+.read-more-btn {
+    padding: 6px 12px;
+    margin: 0 2px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.approve-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.reject-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+.read-more-btn {
+    background-color: #007272;
+    color: white;
+    text-decoration: none;
+}
+
+.approve-btn:hover { background-color: #218838; }
+.reject-btn:hover { background-color: #c82333; }
+.delete-btn:hover { background-color: #5a6268; }
+.read-more-btn:hover { background-color: #005959; }
+
+/* Pending News Highlight */
+.pending-news {
+    background-color: #fff3cd;
+    animation: highlight-pulse 2s infinite;
+}
+
+.pending-news:hover {
+    background-color: #ffe7b3;
+}
+
+@keyframes highlight-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 193, 7, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
+    }
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.status-pending {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.status-approved {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.status-rejected {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    color: #007272;
+}
+
+/* Image Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+}
+
+.close {
+    position: absolute;
+    right: 25px;
+    top: 15px;
+    color: #f1f1f1;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* News Image Thumbnail */
+.news-image {
+    width: 100px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 60px;
+    }
+
+    .sidebar span {
+        display: none;
+    }
+
+    .admin-container {
+        margin-left: 80px;
+        margin-right: 20px;
+        max-width: none;
+    }
+
+    .search-controls {
+        flex-direction: column;
+    }
+
+    #status-filter {
+        width: 100%;
+    }
+
+    .button-container {
+        flex-direction: column;
+    }
+
+    .approve-btn,
+    .reject-btn,
+    .delete-btn {
+        width: 100%;
+        margin: 2px 0;
+    }
+}

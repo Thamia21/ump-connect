@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REGISTER TO UMP CONNECT</title>
+  <link rel="stylesheet" href="../css/register.css">
+  <script type="module" src="../javascript/register.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- Use FontAwesome CDN for eye icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="left-side">
+      <img src="images/ump logo trans.jpg" alt="UMP Connect" class="landing-image">
+    </div>
+    <div class="right-side">
+      <div class="content">
+        <h3>Register</h3>
+        <form id="registrationForm">
+          <label for="StudentNumber">Student Number or Staff Number
+            <input type="text" placeholder="Student Number or Staff Number (Max 9 digits)" id="StudentNumber" pattern="[0-9]{1,9}" required>
+          </label>
+          <label for="FirstName">First Name
+            <input type="text" placeholder="First Name" id="FirstName" required>
+          </label>
+          <label for="LastName">Last Name
+            <input type="text" placeholder="Last Name" id="LastName" required>
+          </label>
+          <label for="email">Email
+            <input type="email" placeholder="Email (must end with @ump.ac.za)" id="email" pattern="[a-zA-Z0-9._%+-]+@ump.ac.za$" required>
+          </label>
+          <label for="phoneNumber">Phone Number
+            <input type="tel" placeholder="Phone Number" id="phoneNumber" pattern="[0-9]{10,15}" required>
+          </label>
+          <label for="password">Password
+            <div class="password-container">
+              <input type="password" placeholder="Password (must be strong)" id="password" required>
+              <i class="fas fa-eye toggle-password" id="toggle-password"></i>
+            </div>
+            <small id="passwordStrengthMessage" class="password-feedback"></small>
+          </label>
+          <label for="confirmPassword">Confirm Password
+            <div class="password-container">
+              <input type="password" placeholder="Confirm Password" id="confirmPassword" required>
+              <i class="fas fa-eye toggle-password"></i>
+            </div>
+            <small id="passwordMatchMessage" class="password-feedback"></small>
+          </label>
+          <button type="submit" id="submit">Create Account</button>
+          <div class="form">
+            <p>Already have an account? <a href="login.html">Log In</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

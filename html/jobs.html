@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobs - UMP CONNECT</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" />
+    <link rel="stylesheet" href="../css/jobs.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="topnav">
+        <div class="logo">
+            <span class="ump">UMP</span>
+            <span class="separator"></span>
+            <span class="connect">CONNECT</span>
+        </div>
+
+        <div class="navContent" id="navContent">
+            <a href="events.html" class="button"><i class="fas fa-home"></i> Home</a>
+            <a href="news.html" class="button"><i class="fas fa-bullhorn"></i> Updates</a>
+            <a href="jobs.html" class="button active"><i class="fas fa-briefcase"></i> Jobs</a>
+            <a href="aboutUs.html" class="button"><i class="fas fa-info-circle"></i>About Us</a>
+        </div>
+
+        <div class="search-container">
+            <form id="search-jobs-form">
+                <input type="text" id="job-title" placeholder="Search.." name="search">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+
+        <div class="dropdown profile-dropdown">
+            <a href="javascript:void(0)" class="user" id="profileInitials"></a>
+            <div class="dropdown-content">
+                <a href="userProfile.html">Edit Profile</a>
+                <a href="login.html">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jobs Container -->
+    <div class="jobs-container">
+        <h2>Available Jobs</h2>
+        
+        <!-- Search Form -->
+        <form id="search-jobs-form" class="search-form">
+            <div class="search-container">
+                <input type="text" id="search-title" placeholder="Search by job title...">
+                <select id="job-type">
+                    <option value="">All Types</option>
+                    <option value="Full-time">Full-time</option>
+                    <option value="Part-time">Part-time</option>
+                    <option value="Internship">Internship</option>
+                    <option value="Contract">Contract</option>
+                </select>
+                <select id="job-location">
+                    <option value="">All Locations</option>
+                    <option value="Mbombela Campus">Mbombela Campus</option>
+                    <option value="Siyabuswa Campus">Siyabuswa Campus</option>
+                    <option value="Remote">Remote</option>
+                </select>
+                <button type="submit">Search</button>
+            </div>
+        </form>
+
+        <!-- Loading Spinner -->
+        <div id="loading-spinner" class="loading-spinner" style="display: none;">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Loading jobs...</p>
+        </div>
+
+        <!-- Jobs List -->
+        <ul id="jobs-list">
+            <!-- Jobs will be loaded here dynamically -->
+        </ul>
+    </div>
+
+    <!-- JavaScript -->
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { 
+            getFirestore, 
+            collection, 
+            getDocs,
+            query,
+            where,
+            orderBy,
+            Timestamp,
+            doc,
+            getDoc
+        } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDRo0-7uMM7wvNC5zGF3nXTbjJgw56YBeE",
+            authDomain: "admin-form-72be8.firebaseapp.com",
+            projectId: "admin-form-72be8",
+            storageBucket: "admin-form-72be8.appspot.com",
+            messagingSenderId: "955286780881",
+            appId: "1:955286780881:web:b6c93cecf4f727774ebef0"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        // Function to format date
+        function formatDate(timestamp) {
+            if (!timestamp) return 'N/A';
+            try {
+                let date;
+                if (timestamp instanceof Timestamp) {
+                    date = timestamp.toDate();
+                } else if (timestamp.seconds) {
+                    date = new Date(timestamp.seconds * 1000);
+                } else {
+                    date = new Date(timestamp);
+                }
+                return date.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                });
+            } catch (error) {
+                console.error('Error formatting date:', error);
+                return 'Invalid Date';
+            }
+        }
+
+        // Function to get user initials
+        function getInitials(firstName, lastName) {
+            const firstInitial = firstName ? firstName.charAt(0).toUpperCase() : '';
+            const lastInitial = lastName ? lastName.charAt(0).toUpperCase() : '';
+            return `${firstInitial}${lastInitial}`;
+        }
+
+        // Function to update profile initials
+        async function updateProfileInitials() {
+            onAuthStateChanged(auth, async (user) => {
+                if (user) {
+                    try {
+                        const userDoc = await getDoc(doc(db, "users", user.uid));
+                        let userData = userDoc.exists() ? userDoc.data() : null;
+
+                        if (!userData) {
+                            const adminDoc = await getDoc(doc(db, "admins", user.uid));
+                            userData = adminDoc.exists() ? adminDoc.data() : null;
+                        }
+
+                        if (userData) {
+                            const initials = getInitials(userData.firstName, userData.lastName);
+                            document.getElementById('profileInitials').innerText = initials;
+                        } else {
+                            document.getElementById('profileInitials').innerText = 'U';
+                        }
+                    } catch (error) {
+                        console.error("Error fetching user data:", error);
+                        document.getElementById('profileInitials').innerText = 'U';
+                    }
+                }
+            });
+        }
+
+        // Function to show loading spinner
+        function showLoading(show) {
+            const spinner = document.getElementById('loading-spinner');
+            if (spinner) {
+                spinner.style.display = show ? 'block' : 'none';
+            }
+        }
+
+        // Function to create job card
+        function createJobCard(job, jobId) {
+            const li = document.createElement('li');
+            li.className = 'job-card';
+            
+            li.innerHTML = `
+                <div class="job-content">
+                    <h3>${job.title || 'No Title'}</h3>
+                    <p class="company"><i class="fas fa-building"></i> ${job.company || 'N/A'}</p>
+                    <p class="location"><i class="fas fa-map-marker-alt"></i> ${job.location || 'N/A'}</p>
+                    <p class="type"><i class="fas fa-briefcase"></i> ${job.type || 'N/A'}</p>
+                    <p class="posted-date"><i class="fas fa-calendar"></i> Posted: ${formatDate(job.timestamp)}</p>
+                    <div class="job-description">
+                        ${job.description ? job.description.substring(0, 150) + '...' : 'No description available.'}
+                    </div>
+                    <div class="requirements">
+                        <h4>Requirements:</h4>
+                        <p>${job.requirements || 'No requirements specified.'}</p>
+                    </div>
+                </div>
+                <div class="job-actions">
+                    <button onclick="applyForJob('${jobId}')" class="apply-button">
+                        <i class="fas fa-paper-plane"></i> Apply Now
+                    </button>
+                </div>
+            `;
+            
+            return li;
+        }
+
+        // Function to load jobs
+        async function loadJobs() {
+            console.log('Starting to load jobs...'); // Debug log
+            
+            const jobsList = document.getElementById('jobs-list');
+            if (!jobsList) {
+                console.error('Jobs list element not found!');
+                return;
+            }
+
+            showLoading(true);
+            jobsList.innerHTML = '';
+
+            try {
+                // Get all jobs first, then filter active ones
+                const jobsRef = collection(db, 'jobs');
+                const querySnapshot = await getDocs(jobsRef);
+                console.log('Found', querySnapshot.size, 'total jobs'); // Debug log
+
+                if (querySnapshot.empty) {
+                    jobsList.innerHTML = `
+                        <li class="no-jobs">
+                            <i class="fas fa-info-circle"></i>
+                            <p>No jobs available at the moment.</p>
+                        </li>
+                    `;
+                    return;
+                }
+
+                // Filter and sort jobs in memory
+                const jobs = [];
+                querySnapshot.forEach(doc => {
+                    const job = doc.data();
+                    if (job.status === 'active') {
+                        jobs.push({ id: doc.id, ...job });
+                    }
+                });
+
+                // Sort by timestamp descending
+                jobs.sort((a, b) => {
+                    const timeA = a.timestamp?.seconds || 0;
+                    const timeB = b.timestamp?.seconds || 0;
+                    return timeB - timeA;
+                });
+
+                if (jobs.length === 0) {
+                    jobsList.innerHTML = `
+                        <li class="no-jobs">
+                            <i class="fas fa-info-circle"></i>
+                            <p>No active jobs available at the moment.</p>
+                        </li>
+                    `;
+                    return;
+                }
+
+                jobs.forEach(job => {
+                    console.log('Processing job:', job.id, job); // Debug log
+                    const jobCard = createJobCard(job, job.id);
+                    jobsList.appendChild(jobCard);
+                });
+
+                console.log('Jobs loaded successfully'); // Debug log
+
+            } catch (error) {
+                console.error('Error loading jobs:', error);
+                jobsList.innerHTML = `
+                    <li class="error-message">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p>Error loading jobs: ${error.message}</p>
+                    </li>
+                `;
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        // Function to handle job application
+        window.applyForJob = function(jobId) {
+            // Store the job ID and redirect to application form
+            sessionStorage.setItem('applyJobId', jobId);
+            window.location.href = 'jobApplication.html';
+        };
+
+        // Call updateProfileInitials on page load
+        updateProfileInitials();
+
+        // Load jobs when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM Content Loaded - Loading jobs...'); // Debug log
+            loadJobs();
+
+            // Handle search form submission
+            const searchForm = document.getElementById('search-jobs-form');
+            if (searchForm) {
+                searchForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    loadJobs();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

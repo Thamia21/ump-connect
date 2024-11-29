@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ump connect</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="content">
+      <h1 class="welcome-text">Welcome to <span>UMP</span> <span class="animated-text" id="animated-word">Connect</span></h1>
+      <p class="tagline">Connecting students, faculty, and resources in one place</p>
+      <div class="buttons">
+        <a href="login.html" class="btn login-btn">Login</a>
+        <a href="register.html" class="btn signup-btn">Sign Up</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const words = ["Connect", "Innovate", "Collaborate", "Inspire", "Achieve"];
+    let currentIndex = 0;
+    const animatedText = document.getElementById("animated-word");
+
+    function changeWord() {
+      animatedText.style.opacity = 0; // Fade out
+
+      setTimeout(() => {
+        currentIndex = (currentIndex + 1) % words.length; // Move to the next word
+        animatedText.textContent = words[currentIndex]; // Change the word
+        animatedText.style.opacity = 1; // Fade in
+      }, 500); // Match this with the CSS transition time
+    }
+
+    setInterval(changeWord, 2000); // Change word every 2 seconds
+  </script>
+</body>
+</html>

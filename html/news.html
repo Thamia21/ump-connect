@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" />
+  <link rel="stylesheet" href="../css/news.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+  <div class="topnav">
+    <div class="logo">
+      <span class="ump">UMP</span>
+      <span class="separator"></span>
+      <span class="connect">CONNECT</span>
+    </div>
+
+    <div class="navContent" id="navContent">
+      <a href="events.html" class="button"><i class="fas fa-home"></i> Home</a>
+      <a href="news.html" class="button active"><i class="fas fa-bullhorn"></i> Updates</a>
+      <a href="jobs.html" class="button"><i class="fas fa-briefcase"></i> Jobs</a>
+      <a href="aboutUs.html" class="button"><i class="fas fa-info-circle"></i>About Us</a>
+    </div>
+
+    <div class="search-container">
+      <form id="searchForm" onsubmit="searchEvents(event); return false;">
+        <input type="text" id="searchInput" placeholder="Search.." name="search">
+        <button type="submit"><i class="fas fa-search"></i></button>
+      </form>
+    </div>
+
+    <div class="dropdown profile-dropdown">
+      <a href="javascript:void(0)" class="user" id="profileInitials" style="background-color: #008080 !important;"></a>
+      <div class="dropdown-content">
+        <a href="userProfile.html">Edit Profile</a>
+        <a href="login.html">Logout</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="main1">
+    <h2>EVENTS UPDATES</h2>
+
+    <div class="container1">
+      <main id="eventContainer" class="news-grid">
+        <!-- Articles will be injected here -->
+      </main>
+    </div>
+  </div>
+
+
+  <script type="module" src="../javascript/news.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

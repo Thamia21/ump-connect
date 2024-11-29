@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" />
+    <link rel="stylesheet" href="../css/events.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.2/main.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.2/main.min.js"></script>
+    
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+    
+    <!-- Add Firebase products that you want to use -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js"></script>
+</head>
+
+<body>
+    <div class="topnav">
+        <div class="logo">
+            <span class="ump">UMP</span>
+            <span class="separator"></span>
+            <span class="connect">CONNECT</span>
+        </div>
+
+        <div class="navContent" id="navContent">
+            
+            <a href="events.html" class="button active"><i class="fas fa-home"></i> Home</a>
+            <a href="news.html" class="button"><i class="fas fa-bullhorn"></i> Updates</a>
+            <a href="jobs.html" class="button"><i class="fas fa-briefcase"></i> Jobs</a>
+            <a href="aboutUs.html" class="button"><i class="fas fa-info-circle"></i>About Us</a>
+        </div>
+
+        <div class="search-container">
+            <form id="search-form">
+                <input type="text" placeholder="Search.." name="search" id="search-input">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+
+        <div class="dropdown profile-dropdown">
+            <a href="javascript:void(0)" class="user" id="profileInitials"></a>
+            <div class="dropdown-content">
+                <a href="userProfile.html">Edit Profile</a>
+                <a href="login.html">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add this below the topnav -->
+    <div class="welcome-message">
+        <div class="welcome-lines">
+            <div class="welcome-line">Welcome,  </div>
+            <div class="welcome-line">Don't miss out!</div>
+            <div class="welcome-line">Stay updated every day!</div>
+            <div class="welcome-line">About upcoming events and events updates.</div>
+        </div>
+    </div>
+
+    <!-- UPCOMING EVENTS Heading -->
+    <h2 class="heading">UPCOMING EVENTS</h2>
+
+    <!-- Page Container for Calendar and Events List -->
+    <div class="events-page-container">
+        <div class="events-container" id="events-list">
+            <!-- Event cards will be dynamically added here -->
+        </div>
+
+        <div class="calendar-section">
+            <h2 class="calendar-heading">Events Calendar</h2>
+            <div id="calendar"></div>
+        </div>
+    </div>
+    
+    
+    <!-- Modal for Image Popup -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+     <!-- Event Modal -->
+<div id="eventModal" class="event-modal">
+    <div class="event-modal-content">
+        <span class="close" id="closeEventModal">&times;</span>
+        <div class="event-modal-header">
+            <h2 id="modalEventTitle"></h2>
+        </div>
+        <div class="event-modal-body">
+            <p><i class="far fa-calendar"></i> <span id="modalEventDate"></span></p>
+            <p><i class="far fa-clock"></i> <span id="modalEventTime"></span></p>
+            <p><i class="fas fa-map-marker-alt"></i> <span id="modalEventLocation"></span></p>
+            <div class="event-modal-description">
+                <h3>Description</h3>
+                <p id="modalEventDescription"></p>
+            </div>
+            <div class="event-modal-reactions" id="modalReactionButtons">
+                <!-- Reaction buttons will be dynamically added here -->
+            </div>
+        </div>
+       
+ 
+
+    <script type="module" src="../javascript/events.js"></script>
+</body>
+
+</html>

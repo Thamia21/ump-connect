@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Read Article</title>
+    <link rel="stylesheet" href="../css/readArticle.css">
+</head>
+<body>
+    <div class="article-container">
+        <h2 id="articleTitle"></h2>
+        <p><strong>Posted by:</strong> <span id="managerName"></span></p>
+        <p><strong>Date:</strong> <span id="articleDate"></span></p>
+        <img id="articleImage" src="" alt="Article Image" style="width:100%;">
+        <p><strong>Intro:</strong> <span id="articleIntro"></span></p>
+        <p><strong>Summary:</strong> <span id="articleSummary"></span></p>
+        <p><strong>Description:</strong> <span id="articleDescription"></span></p>
+    </div>
+
+    <!-- Firebase JS SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js" type="module"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js" type="module"></script>
+    <script type="module" src="../javascript/readArticle.js" defer></script>
+</body>
+</html>

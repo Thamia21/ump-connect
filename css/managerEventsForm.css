@@ -1,0 +1,359 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+/* Sidebar styling */
+.sidebar {
+    height: 100vh;
+    width: 250px;
+    background-color: teal;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-bottom: 5px;
+    border-left: 4px solid transparent;
+}
+
+.sidebar a i {
+    margin-right: 10px;
+}
+
+.sidebar a:hover {
+    background-color: #009999;
+    border-left: 4px solid #f4f4f4;
+}
+
+.sidebar a.active {
+    background-color: #005f5f;
+    font-weight: bold;
+    border-left: 4px solid #f4f4f4;
+}
+
+.sidebar a.logout {
+    background-color: teal;
+    margin-top: 0;
+}
+
+.sidebar a.logout:hover {
+    background-color: #009999;
+}
+
+/* Main content */
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.container {
+    width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: teal;
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"], 
+input[type="url"], 
+input[type="date"], 
+input[type="file"], 
+button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.event-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.event-item img {
+    width: 200px;
+    height: auto;
+    margin-top: 10px;
+}
+
+/* Event status colors */
+.event-status {
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.event-status.pending {
+    background-color: #ffd700;
+    color: #000;
+}
+
+.event-status.approved {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.event-status.rejected {
+    background-color: #f44336;
+    color: white;
+}
+
+.interaction-counts {
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+}
+
+.reaction-counts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.reaction-counts p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 6px;
+    font-size: 0.95em;
+}
+
+.reaction-counts i {
+    font-size: 1.1em;
+    width: 20px;
+    text-align: center;
+}
+
+.reaction-counts i.fa-thumbs-up {
+    color: #2196F3;
+}
+
+.reaction-counts i.fa-heart {
+    color: #F44336;
+}
+
+.reaction-counts i.fa-star {
+    color: #FFC107;
+}
+
+.reaction-counts p span {
+    margin-left: auto;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.likes-count {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.likes-count p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    color: #555;
+}
+
+.likes-count i {
+    font-size: 1.1em;
+}
+
+.likes-count i.fa-thumbs-up {
+    color: #4CAF50;
+}
+
+.table-container {
+    margin-top: 30px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+}
+
+#events-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    background: white;
+}
+
+#events-table th,
+#events-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+#events-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #333;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    letter-spacing: 0.5px;
+}
+
+#events-table tr:hover {
+    background-color: #f5f5f5;
+}
+
+.thumbnail {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    font-weight: 500;
+}
+
+.status-badge.pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status-badge.approved {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-badge.rejected {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.event-reactions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.reaction-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.reaction-item i {
+    font-size: 1.1em;
+}
+
+.reaction-item i.fa-thumbs-up {
+    color: #2196F3;
+}
+
+.reaction-item i.fa-heart {
+    color: #F44336;
+}
+
+.reaction-item i.fa-star {
+    color: #FFC107;
+}
+
+.no-events,
+.error-message {
+    text-align: center;
+    padding: 20px !important;
+    color: #666;
+}
+
+.error-message {
+    color: #dc3545;
+}
+
+/* Responsive table */
+@media screen and (max-width: 768px) {
+    .table-container {
+        margin: 15px -15px;
+        border-radius: 0;
+    }
+
+    #events-table th {
+        display: none;
+    }
+
+    #events-table td {
+        display: block;
+        padding: 8px 15px;
+        text-align: right;
+        position: relative;
+    }
+
+    #events-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.85em;
+    }
+
+    #events-table tr {
+        display: block;
+        margin-bottom: 15px;
+        border-bottom: 2px solid #e0e0e0;
+    }
+
+    .event-reactions {
+        justify-content: flex-end;
+    }
+}
